@@ -3,37 +3,40 @@ using Application.Services.Authentication.Common;
 using Application.Services.Authentication.Queries.Login;
 using Contracts.Authentication;
 using ErrorOr;
+using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
 
-[ApiController]
 [Route("auth")]
+[AllowAnonymous]
 public class AuthenticationController : ApiController
 {
     private readonly ILogger<AuthenticationController> _logger;
     private readonly ISender _mediator;
+    private readonly IMapper _mapper;
 
-    public AuthenticationController(ILogger<AuthenticationController> logger, IMediator mediator)
+    public AuthenticationController(
+        ILogger<AuthenticationController> logger,
+        IMediator mediator,
+        IMapper mapper)
     {
         _logger = logger;
         _mediator = mediator;
+        _mapper = mapper;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> RegisterAsync(RegisterRequest request)
     {
-        var command = new RegisterCommand(
-            request.FirstName,
-            request.LastName,
-            request.Email,
-            request.Password);
+        var command = _mapper.Map<TRequest>(request);
 
         ErrorOr<AuthenticationResult> authResult = await _mediator.Send(command);
 
         return authResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
+            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
             errors => Problem(errors));
     }
 

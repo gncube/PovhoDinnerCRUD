@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.Services.Authentication.Common.Behaviours;
+using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
 
@@ -11,6 +14,12 @@ public static class DependencyInjection
         services.AddSwaggerGen();
         // https://github.com/jbogard/MediatR
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
+
+        services.AddScoped(
+                typeof(IPipelineBehavior<,>),
+                typeof(ValidationBehavior<,>));
+
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
         return services;
     }

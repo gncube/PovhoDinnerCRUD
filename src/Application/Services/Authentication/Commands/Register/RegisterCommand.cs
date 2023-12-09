@@ -3,7 +3,7 @@ using ErrorOr;
 using MediatR;
 
 namespace Application.Services.Authentication.Commands.Register;
-public record RegisterCommand(
+public record TRequest(
     string FirstName,
     string LastName,
     string Email,
