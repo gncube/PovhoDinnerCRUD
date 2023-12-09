@@ -17,6 +17,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Api\Api.csproj", "{F22C723D-E7AF-4AA7-A7AE-B8564962CCF7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{86748230-97C3-4D40-AB3B-143CB511958E}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Api.md = docs\Api.md
+		docs\DomainModels.md = docs\DomainModels.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{CE8B1B8A-0C58-4566-B35C-DED1A0B3489C}"
+	ProjectSection(SolutionItems) = preProject
+		docs\DomainModels\Aggregates.Bill.md = docs\DomainModels\Aggregates.Bill.md
+		docs\DomainModels\Aggregates.Dinner.md = docs\DomainModels\Aggregates.Dinner.md
+		docs\DomainModels\Aggregates.Guest.md = docs\DomainModels\Aggregates.Guest.md
+		docs\DomainModels\Aggregates.Host.md = docs\DomainModels\Aggregates.Host.md
+		docs\DomainModels\Aggregates.Menu.md = docs\DomainModels\Aggregates.Menu.md
+		docs\DomainModels\Aggregates.MenuReview.md = docs\DomainModels\Aggregates.MenuReview.md
+		docs\DomainModels\Aggregates.User.md = docs\DomainModels\Aggregates.User.md
+		docs\DomainModels\Bill.dio = docs\DomainModels\Bill.dio
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +71,7 @@ Global
 		{1CF8B8D2-FFB0-4CA3-AF88-9527CB402A08} = {541100E9-071B-44C6-A223-B75616D8F8A1}
 		{96BC0A22-6D3F-4640-8D55-74B7D3872B1D} = {541100E9-071B-44C6-A223-B75616D8F8A1}
 		{F22C723D-E7AF-4AA7-A7AE-B8564962CCF7} = {541100E9-071B-44C6-A223-B75616D8F8A1}
+		{CE8B1B8A-0C58-4566-B35C-DED1A0B3489C} = {86748230-97C3-4D40-AB3B-143CB511958E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {062173F1-A991-49D0-97A1-FD4D60B47F7A}
