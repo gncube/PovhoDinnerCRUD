@@ -1,5 +1,5 @@
 ﻿namespace Contracts.Authentication;
-public record AuthenticationResponse(
+public record AuthenticationResponseLegacy(
     Guid Id,
     string FirstName,
     string LastName,

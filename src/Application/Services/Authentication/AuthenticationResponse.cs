@@ -1,8 +1,7 @@
-﻿namespace Application.Services.Authentication;
+﻿using Domain.Users;
+
+namespace Application.Services.Authentication;
 
 public record AuthenticationResponse(
-       Guid Id,
-       string FirstName,
-       string LastName,
-       string Email,
+       User User,
        string Token);

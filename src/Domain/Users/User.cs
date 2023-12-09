@@ -4,10 +4,10 @@ namespace Domain.Users;
 
 public class User
 {
-    public UserId Id { get; private set; }
-    public string FirstName { get; private set; } = string.Empty;
-    public string LastName { get; private set; } = string.Empty;
-    public string Email { get; private set; } = string.Empty;
-    public string Password { get; private set; }
+    public UserId Id { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Password { get; set; }
 }
 

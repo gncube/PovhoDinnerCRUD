@@ -1,7 +1,7 @@
 using Application.Services.Authentication;
 using Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using AuthenticationResponse = Contracts.Authentication.AuthenticationResponse;
+
 
 namespace Api.Controllers;
 
@@ -28,10 +28,7 @@ public class AuthenticationController : ControllerBase
             request.Password);
 
         var response = new AuthenticationResponse(
-            authResult.Id,
-            authResult.FirstName,
-            authResult.LastName,
-            authResult.Email,
+            authResult.User,
             authResult.Token);
 
         return Ok(response);
@@ -45,10 +42,7 @@ public class AuthenticationController : ControllerBase
             request.Password);
 
         var response = new AuthenticationResponse(
-            authResult.Id,
-            authResult.FirstName,
-            authResult.LastName,
-            authResult.Email,
+            authResult.User,
             authResult.Token);
 
         return Ok(response);
