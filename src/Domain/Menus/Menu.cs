@@ -1,4 +1,5 @@
-﻿using Domain.Common.ValueObjects;
+﻿using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Dinners.ValueObjects;
 using Domain.Hosts.ValueObjects;
 using Domain.MenuReview.ValueObjects;
@@ -6,7 +7,7 @@ using Domain.Menus.Entities;
 using Domain.Menus.ValueObjects;
 
 namespace Domain.Menus;
-public sealed class Menu
+public sealed class Menu : AggregateRoot<MenuId, Guid>
 {
     private readonly List<MenuSection> _sections = new();
     private readonly List<DinnerId> _dinnerIds = new();
@@ -23,7 +24,7 @@ public sealed class Menu
     public IReadOnlyList<MenuReviewId> MenuReviewIds => _menuReviewIds.AsReadOnly();
 
     public DateTimeOffset CreatedDateTime { get; private set; }
-    public DateTimeOffset LastUpdatedDateTime { get; set; }
+    public DateTimeOffset LastUpdatedDateTime { get; private set; }
     //public MenuId Id { get; }
 
     private Menu(
@@ -33,8 +34,8 @@ public sealed class Menu
         string description,
         AverageRating averageRating,
         List<MenuSection> sections)
-    //: base(menuId) 
-    // TODO: Add base class
+    : base(menuId)
+
     {
         HostId = hostId;
         Name = name;
@@ -62,4 +63,7 @@ public sealed class Menu
 
         return menu;
     }
+#pragma warning disable CS8618
+    private Menu() { }
+#pragma warning restore CS8618
 }

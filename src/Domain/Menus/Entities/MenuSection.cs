@@ -1,6 +1,8 @@
-﻿namespace Domain.Menus.Entities;
+﻿using Domain.Common.Models;
 
-public sealed class MenuSection
+namespace Domain.Menus.Entities;
+
+public sealed class MenuSection : Entity<MenuSectionId>
 {
     private readonly List<MenuItem> _items = new();
     public string Name { get; }
@@ -13,8 +15,7 @@ public sealed class MenuSection
         string name,
         string description,
         List<MenuItem> items)
-    //: base(menuSectionId)
-    // TODO: Add base class
+        : base(menuSectionId)
     {
         Name = name;
         Description = description;
@@ -25,4 +26,8 @@ public sealed class MenuSection
         string name,
         string description,
         List<MenuItem> items) => new(MenuSectionId.CreateUnique(), name, description, items);
+
+#pragma warning disable CS8618
+    private MenuSection() { }
+#pragma warning restore CS8618
 }

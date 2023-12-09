@@ -1,24 +1,28 @@
 @host = http://localhost:5229
-@hostId = 86ca1f40-5a5b-4147-b6af-b6bebf726799
-@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VySWQgeyBWYWx1ZSA9IDg2Y2ExZjQwLTVhNWItNDE0Ny1iNmFmLWI2YmViZjcyNjc5OSB9IiwiZ2l2ZW5fbmFtZSI6IkdlcmFsZCIsImZhbWlseV9uYW1lIjoiTmN1YmUiLCJqdGkiOiJkMjU5MDkxOC1kM2E3LTRmNGItOWZhNy1mMTg5NzM5ZDFiY2UiLCJleHAiOjE3MDIxNTE0ODgsImlzcyI6IlBvdmhvRGlubmVyIiwiYXVkIjoiUG92aG9EaW5uZXIifQ.IXVusnL6muG8LS-9J6Aimb918MGWM9sabGrGGMvVDMY
+@hostId = 354c0245-ecb3-43d6-8c8f-3c28e359de00
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VySWQgeyBWYWx1ZSA9IDM1NGMwMjQ1LWVjYjMtNDNkNi04YzhmLTNjMjhlMzU5ZGUwMCB9IiwiZ2l2ZW5fbmFtZSI6IkdlcmFsZCIsImZhbWlseV9uYW1lIjoiTmN1YmUiLCJqdGkiOiI5ODVhNjA1OC0yOWZlLTRhOGYtYWE1MC0xZGExMjkzYmIxZDMiLCJleHAiOjE3MDIxNTgxNzcsImlzcyI6IlBvdmhvRGlubmVyIiwiYXVkIjoiUG92aG9EaW5uZXIifQ.t8NUa89VAUjjVUtAJHyr3ycHA2Yl0_yXtNFvZFjv78c
 
 POST {{host}}/hosts/{{hostId}}/menus
 Content-Type: application/json
 Authorization:  Bearer {{token}}
 
-{
-    "Name": "Yummy Menu",
-    "Description": "A menu with yummy food",
-    "Sections": [
-        {
-            "Name": "Appetizers",
-            "Description": "Starters",
-            "Items": [
-                {
-                    "Name": "Fried pickles",
-                    "Description": "Deep fried pickles"
-                }
-            ]
-        }
-    ]
-}
+    {
+        "Name": "Seafood Menu",
+        "Description": "A menu with seafood",
+        "Sections": [
+            {
+                "Name": "Main Course",
+                "Description": "Delicious seafood dishes",
+                "Items": [
+                    {
+                        "Name": "Grilled Salmon",
+                        "Description": "Salmon grilled to perfection"
+                    },
+                    {
+                        "Name": "Shrimp Scampi",
+                        "Description": "Shrimp cooked in garlic butter sauce"
+                    }
+                ]
+            }
+        ]
+    }

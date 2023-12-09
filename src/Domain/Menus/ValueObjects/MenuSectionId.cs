@@ -1,6 +1,8 @@
-﻿namespace Domain.Menus.Entities;
+﻿using Domain.Common.Models;
 
-public record MenuSectionId
+namespace Domain.Menus.Entities;
+
+public sealed class MenuSectionId : ValueObject
 {
     public Guid Value { get; }
     private MenuSectionId(Guid value)
@@ -17,4 +19,11 @@ public record MenuSectionId
     {
         return new(value);
     }
+
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Value;
+    }
+
+    private MenuSectionId() { }
 }
