@@ -33,7 +33,7 @@ public static class DependencyInjection
         services.AddDbContext<PovhoDinnerDbContext>(options =>
             options.UseSqlite($"Data Source={databasePath}"));
 
-        services.AddSingleton<IUserRepository, UserRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }
@@ -44,7 +44,7 @@ public static class DependencyInjection
         configuration.Bind(JwtSettings.SectionName, jwtSettings);
 
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
-        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
         services.AddAuthentication(defaultScheme: "Bearer")
             .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters

@@ -5,18 +5,20 @@ namespace Infrastructure.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    public UserRepository()
-    {
+    private readonly PovhoDinnerDbContext _dbContext;
 
+    public UserRepository(PovhoDinnerDbContext dbContext)
+    {
+        _dbContext = dbContext;
     }
-    private static readonly List<User> _users = new();
     public User? GetUserByEmail(string email)
     {
-        return _users.FirstOrDefault(u => u.Email == email);
+        return _dbContext.Users.FirstOrDefault(u => u.Email == email);
     }
 
     public void Add(User user)
     {
-        _users.Add(user);
+        _dbContext.Users.Add(user);
+        _dbContext.SaveChanges();
     }
 }
