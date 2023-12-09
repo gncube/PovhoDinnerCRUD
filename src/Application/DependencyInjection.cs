@@ -1,7 +1,4 @@
-﻿using Application.Services.Authentication.Commands;
-using Application.Services.Authentication.Commands.Register;
-using Application.Services.Authentication.Queries;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
 
@@ -12,8 +9,8 @@ public static class DependencyInjection
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
-        services.AddScoped<IAuthenticationCommandService, RegisterCommandHandler>();
-        services.AddScoped<IAuthenticationQueryService, AuthenticationQueryService>();
+        // https://github.com/jbogard/MediatR
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
 
         return services;
     }
