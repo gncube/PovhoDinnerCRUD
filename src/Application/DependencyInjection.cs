@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.Services.Authentication.Commands;
+using Application.Services.Authentication.Queries;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
 
@@ -9,7 +11,8 @@ public static class DependencyInjection
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
-        services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddScoped<IAuthenticationCommandService, AuthenticationCommandService>();
+        services.AddScoped<IAuthenticationQueryService, AuthenticationQueryService>();
 
         return services;
     }

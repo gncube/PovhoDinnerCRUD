@@ -4,7 +4,7 @@ using Domain.Common.Errors;
 using Domain.Users;
 using ErrorOr;
 
-namespace Application.Services.Authentication;
+namespace Application.Services.Authentication.Queries;
 
 public class AuthenticationQueryService : IAuthenticationQueryService
 {
