@@ -1,6 +1,6 @@
 ﻿using Domain.Users;
 
-namespace Application.Services.Authentication;
+namespace Application.Services.Authentication.Common;
 
 public record AuthenticationResponse(
        User User,

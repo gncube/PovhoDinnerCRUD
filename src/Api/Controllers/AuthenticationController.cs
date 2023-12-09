@@ -1,4 +1,3 @@
-using Application.Services.Authentication;
 using Application.Services.Authentication.Commands.Register;
 using Application.Services.Authentication.Common;
 using Application.Services.Authentication.Queries.Login;
