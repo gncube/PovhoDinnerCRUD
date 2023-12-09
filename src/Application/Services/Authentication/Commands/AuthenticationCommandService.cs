@@ -1,7 +1,9 @@
 ﻿using Application.Common.Interfaces;
 using Application.Services.Authentication.Common;
+using Domain.Common.Errors;
 using Domain.Users;
 using Domain.Users.ValueObjects;
+using ErrorOr;
 
 namespace Application.Services.Authentication.Commands;
 
@@ -15,11 +17,10 @@ public class AuthenticationCommandService : IAuthenticationCommandService
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
     }
-    public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+    public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
-        // Check if email is already registered
         if (_userRepository.GetUserByEmail(email) != null)
-            throw new Exception("Email already registered.");
+            return Errors.User.DuplicateEmail;
 
         var user = new User
         {
@@ -32,11 +33,8 @@ public class AuthenticationCommandService : IAuthenticationCommandService
 
         _userRepository.Add(user);
 
-        // Create Jwt Token
         string token = _jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthenticationResult(
-            user,
-            token);
+        return new AuthenticationResult(user, token);
     }
 }
