@@ -34,6 +34,7 @@ public static class DependencyInjection
             options.UseSqlite($"Data Source={databasePath}"));
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IMenuRepository, MenuRepository>();
 
         return services;
     }
