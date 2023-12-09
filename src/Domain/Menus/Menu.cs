@@ -1,5 +1,5 @@
 ﻿using Domain.Common.ValueObjects;
-using Domain.Dinners;
+using Domain.Dinners.ValueObjects;
 using Domain.Hosts.ValueObjects;
 using Domain.MenuReview.ValueObjects;
 using Domain.Menus.Entities;
@@ -24,6 +24,7 @@ public sealed class Menu
 
     public DateTimeOffset CreatedDateTime { get; private set; }
     public DateTimeOffset LastUpdatedDateTime { get; set; }
+    //public MenuId Id { get; }
 
     private Menu(
         MenuId menuId,
