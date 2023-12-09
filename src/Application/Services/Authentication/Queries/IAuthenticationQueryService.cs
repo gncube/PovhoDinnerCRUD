@@ -1,7 +1,8 @@
 ﻿using Application.Services.Authentication.Common;
+using ErrorOr;
 
 namespace Application.Services.Authentication;
 public interface IAuthenticationQueryService
 {
-    AuthenticationResult Login(string email, string password);
+    ErrorOr<AuthenticationResult> Login(string email, string password);
 }

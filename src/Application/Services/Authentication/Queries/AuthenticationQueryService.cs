@@ -1,5 +1,8 @@
 ﻿using Application.Common.Interfaces;
 using Application.Services.Authentication.Common;
+using Domain.Common.Errors;
+using Domain.Users;
+using ErrorOr;
 
 namespace Application.Services.Authentication;
 
@@ -14,22 +17,16 @@ public class AuthenticationQueryService : IAuthenticationQueryService
         _userRepository = userRepository;
     }
 
-    public AuthenticationResult Login(string email, string password)
+    public ErrorOr<AuthenticationResult> Login(string email, string password)
     {
-        // Validate password
-        var user = _userRepository.GetUserByEmail(email);
-        if (user == null)
-            throw new Exception("Invalid email or password.");
+        if (_userRepository.GetUserByEmail(email) is not User user)
+            return Errors.Authentication.InvalidCredentials;
 
         if (user.Password != password)
-            throw new Exception("Invalid email or password.");
+            return Errors.Authentication.InvalidCredentials;
 
-        // Create Jwt Token
         string token = _jwtTokenGenerator.GenerateToken(user);
 
-
-        return new AuthenticationResult(
-                user,
-                token);
+        return new AuthenticationResult(user, token);
     }
 }
