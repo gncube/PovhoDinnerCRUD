@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Interfaces.Authentication;
+using Application.Common.Interfaces.Persistence;
 using Application.Services.Authentication.Common;
 using Domain.Common.Errors;
 using Domain.Users;

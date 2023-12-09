@@ -1,4 +1,6 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Interfaces.Authentication;
+using Application.Common.Interfaces.Persistence;
 using Infrastructure.Authentication;
 using Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
