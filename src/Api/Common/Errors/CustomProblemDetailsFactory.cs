@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
 
-namespace Api.Errors;
+namespace Api.Common.Errors;
 
 /// <summary>
 ///     A <see cref="ProblemDetailsFactory" /> that adds additional details to the <see cref="ProblemDetails" />.
