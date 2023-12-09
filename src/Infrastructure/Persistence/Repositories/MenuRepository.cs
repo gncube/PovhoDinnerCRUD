@@ -4,9 +4,15 @@ using Domain.Menus;
 namespace Infrastructure.Persistence.Repositories;
 public class MenuRepository : IMenuRepository
 {
-    private static readonly List<Menu> __menuList = new();
+    private readonly PovhoDinnerDbContext _dbContext;
+
+    public MenuRepository(PovhoDinnerDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
     public void Add(Menu menu)
     {
-        __menuList.Add(menu);
+        _dbContext.Menus.Add(menu);
+        _dbContext.SaveChanges();
     }
 }
