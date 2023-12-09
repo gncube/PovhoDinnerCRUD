@@ -1,3 +1,4 @@
+using Api.Errors;
 using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
